@@ -1,27 +1,64 @@
-# Ai-powered-code-helper
-Code Helper is a smart Chrome extension designed to assist developers in solving complex coding problems more efficiently. It uses Google Studio AI (Gemini/PaLM) to analyze problem statements from popular coding platforms like LeetCode, HackerRank, Codeforces, and more, providing context-aware hints in real time.
-The extension captures the content of coding problems directly from the active tab, processes it using AI, and displays intelligent hints to guide users toward the solution—without giving away the full answer. This promotes learning and deep problem-solving skills.
 
-🛠 Technology Used
-Google Studio AI (Gemini/PaLM): Powers hint generation with natural language understanding
+# LeetCode Helper Chrome Extension
 
-Node.js: Handles backend request routing and API integration
+LeetCode Tutor is a Chrome extension designed to help users analyze and understand coding problems on LeetCode. By extracting problem details directly from the LeetCode website and sending them to Google AI Studio, the extension provides AI-generated guidance, including solution strategies, key concepts, common pitfalls, and complexity analysis.
 
-JavaScript: Manages dynamic behavior and content extraction from coding platforms
+## Features
 
-HTML & CSS: Builds a clean, responsive extension UI
+- **Automatic Problem Extraction**: Retrieves the title and description of the active LeetCode problem.
+- **AI-Powered Analysis**: Uses Google AI Studio to generate a solution guide for the problem.
+- **Interactive UI**: Simple popup interface to trigger and view analysis results.
 
-JSON: Manages the extension’s manifest and AI data formatting
+## How It Works
 
-🔍 Key Highlights
-Lightweight and easy to use
+1. **Popup Interface (`Popup.js`)**: 
+   - Provides a button to start analyzing the current LeetCode problem.
+   - Displays analysis results or error messages within the popup.
+  
+2. **Content Script (`content.js`)**: 
+   - Runs on LeetCode problem pages.
+   - Extracts the problem title and description.
 
-Works on any coding website
+3. **Background Script (`background.js`)**: 
+   - Listens for messages from the popup and retrieves LeetCode problem data from `content.js`.
 
-Promotes learning by offering hints—not direct solutions
+4. **(`script.js`)**:
+   - Manages API calls to external services.
+   - Helps keep sensitive keys secure by acting as a proxy between the extension and the AI API.
 
-Enhances problem-solving ability with AI support
+## Setup
 
-Built with a modular and scalable architecture
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/(your-name)/leetcode-helper
+   cd leetcode-helper
+   ```
 
-Code Helper is ideal for students, competitive programmers, and developers preparing for interviews. Whether you're stuck on a tricky algorithm or just need a nudge in the right direction, this AI-powered assistant is always just a click away.
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Add Environment Variables**:
+   - Create a `.env` file in the root directory:
+     ```plaintext
+     API_KEY=your-google-api-key
+     ```
+   - Replace `your-google-api-key` with your Google Gemini API key.
+
+
+4. **Load the Extension into Chrome**:
+   - Open Chrome and go to `chrome://extensions/`.
+   - Enable "Developer mode."
+   - Click "Load unpacked" and select the `chrome-extension` directory.
+
+## Usage
+
+1. **Navigate to a LeetCode Problem Page**: Go to any problem on [LeetCode](https://leetcode.com/problems/).
+2. **Open the Extension**: Click on the extension icon in the Chrome toolbar to open the popup.
+3. **Analyze the Problem**: Click the "Analyze Problem" button. The extension will extract the problem details and provide AI-generated insights on solving it.
+
+## Technologies Used
+
+- **HTML, CSS**: For building the popup UI.
+- **Google AI Studio**: Provides the AI-generated solution analysis.
