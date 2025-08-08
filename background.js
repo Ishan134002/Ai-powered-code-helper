@@ -1,3 +1,3 @@
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('LeetCode Hint Fetcher Extension Installed');
+  console.log('Ai Hint Fetcher Extension Installed');
 });
